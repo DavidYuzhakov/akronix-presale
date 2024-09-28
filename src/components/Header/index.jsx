@@ -205,7 +205,7 @@ export function Header() {
                 </a>
               </div>
 
-              <button className={`${styles.btnMenu} btn`} type="button">
+              <button onClick={connectHandler} className={`${styles.btnMenu} btn`} type="button">
                 {isAuth ? tonAddress : 'подключить кошелек'}
               </button>
               {isAuth && (
