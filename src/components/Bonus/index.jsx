@@ -6,6 +6,7 @@ import { bonus } from "../../data"
 import elImg from "../../assets/icons/sub-el.svg"
 import ton from '../../assets/img/swap/ton.svg';
 import usdt from '../../assets/img/swap/usdt.svg';
+import { gotoHandler, scrollToBlock } from "../../utils/main";
 
 export function Bonus () {
   const {ref, inView} = useInView({
@@ -50,7 +51,7 @@ export function Bonus () {
                   {item.usdt}
                 </div>
               </div>
-              <button className={`btn`} type="button">
+              <button onClick={(e) => scrollToBlock(e, 'form')} className={`btn`} type="button">
                 получить nft
               </button>
             </div>

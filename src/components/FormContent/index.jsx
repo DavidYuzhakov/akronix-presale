@@ -129,7 +129,7 @@ export function FormContent({ available, price, tonPrice }) {
   }
 
   useEffect(() => {
-    setAkron(((amount * (currency === 'usdt' ? 1 : tonPrice)) * price).toFixed(4))
+    setAkron(((amount * (currency === 'usdt' ? 1 : tonPrice)) / price).toFixed(4))
   }, [currency, amount, price])
 
   useEffect(() => {

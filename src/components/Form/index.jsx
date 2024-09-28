@@ -32,7 +32,7 @@ export function Form() {
   }, [])
 
   return (
-    <div className={styles.block}>
+    <div className={styles.block} id="form">
       <div className={styles.head}>
         <h3>собрано более ${currentAmount}</h3>
         <div className={styles.headLabel}>
