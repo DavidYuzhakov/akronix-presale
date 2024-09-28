@@ -16,12 +16,11 @@ import { useAlert } from '../../context/AlertContext'
 
 import { useProofApi } from '../../hooks/useProofApi'
 import useTonConnect from '../../hooks/useTonConnect'
+import { ProgressBar } from '../ProgressBar'
 
 export function FormContent({ available, price, tonPrice }) {
   const ProofApi = useProofApi()
   const TonConnect = useTonConnect()
-
-  const myScore = 750
 
   const { isAuth } = useAuth()
   const { showAlert } = useAlert()
@@ -330,12 +329,8 @@ export function FormContent({ available, price, tonPrice }) {
             </div>
           </div>
           <div className={styles.nftContent}>
-            <div className={styles.progressBar}>
-              {[...new Array(82)].map((_, i) => (
-                <span key={i} className={(i + 1) <= 45 ? styles.fill : ''} />
-              ))}
-            </div>
-            {nft.map(card => (
+            <ProgressBar claimed={userInfo.nft_info.claimed_nfts} />
+            {nft.map((card, i) => (
               <div key={card.id} className={styles.nftCard}>
                 <img src={arrow} alt="arrow" />
                 <div className={styles.content}>
@@ -343,7 +338,7 @@ export function FormContent({ available, price, tonPrice }) {
                     { card.score }
                   </div>
                   <div className={styles.el}>
-                    <img src={myScore > card.score ? passed : notPassed} alt="" />
+                    <img src={userInfo.nft_info.claimed_nfts[i] ? passed : notPassed} alt="" />
                   </div>
                   <img className={styles.char} src={`/akronix-presale/nft/${card.id}.png`} alt="character" />
                 </div>
@@ -359,7 +354,9 @@ export function FormContent({ available, price, tonPrice }) {
             </div>
             <div className={styles.card}>
               <h5>до след. NFT:</h5>
-              <p>760.56 { isUsdt ? 'usdt' : 'ton'}</p>
+              <p>
+                { isUsdt ? `${userInfo.nft_info.remaining_usdt} usdt` : `${userInfo.nft_info.remaining_ton} ton`}
+              </p>
             </div>
           </div>
           <button className='btn' type='submit'>
