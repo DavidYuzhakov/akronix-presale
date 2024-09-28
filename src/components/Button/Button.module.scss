@@ -1,0 +1,21 @@
+@import '../../scss/mixins';
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @include adaptiv-value('gap', 20, 5, 1);
+
+  img {
+    margin-top: 10px;
+    @include adaptiv-value('width', 140, 85, 1);
+  }
+
+  button {
+    @include adaptiv-value('padding-top', 18, 12, 1);
+    @include adaptiv-value('padding-bottom', 18, 12, 1);
+    @include adaptiv-value('padding-right', 24, 15, 1);
+    @include adaptiv-value('padding-left', 24, 15, 1);
+    @include adaptiv-value('font-size', 16, 12, 1);
+  }
+}

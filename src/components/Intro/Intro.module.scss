@@ -1,0 +1,201 @@
+@import '../../scss/mixins';
+
+.intro {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  background: url('../../assets/img/intro/bg.png') center no-repeat;
+  background-size: cover;
+
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+
+  @media (min-width: 1500px) {
+    background-size: contain;
+  }
+ 
+  @include adaptiv-value('height', 1110, -50, 1);
+
+
+  @media (max-width: $md-1) {
+    height: 100%;
+    @include adaptiv-value('padding-top', 200, 100, 1);
+    @include adaptiv-value('padding-bottom', 150, 50, 1);
+  }
+
+  &._animate {
+    opacity: 1;
+    .content, .logo {
+      translate: 0 0;
+      opacity: 1;
+    }
+  }
+}
+
+.container {
+  @media (min-width: 1700px) {
+    position: relative;
+  }
+}
+
+.pattern {
+  pointer-events: none;
+  img {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+
+    &:first-child {
+      top: 0;
+    }
+
+    &:last-child {
+      bottom: 0;
+    }
+  }
+}
+
+.logo {
+  opacity: 0;
+  max-width: 100%;
+  transition: all .4s ease-in-out .6s;
+  @include adaptiv-value('margin-bottom', 50, 25, 1);
+  @media (max-width: $md-3) {
+    scale: 1.3;
+  }
+
+  @media (max-width: $md-4) {
+    scale: 1.7;
+  }
+}
+
+.content {
+  translate: 0 30%;
+  opacity: 0;
+  transition: all .4s ease-in-out .3s;
+}
+
+h1 {
+  color: $white;
+  @include adaptiv-value('font-size', 48, 26, 1);
+  @include adaptiv-value('margin-bottom', 40, 20, 1);
+  font-weight: 400;
+  letter-spacing: 9.5px;
+  line-height: 1.2;
+
+  text-shadow: 0 0 10px rgba($secondary, .5), 2px 2px rgba($main, .2);
+}
+
+.social {
+  display: flex;
+  align-items: center;
+  @include adaptiv-value('gap', 24, 15, 1);
+  @include adaptiv-value('margin-top', 90, 30, 1);
+  justify-content: center;
+
+  img {
+    cursor: pointer;
+    opacity: .8;
+    transition: opacity .2s ease;
+  
+    @include adaptiv-value('width', 64, 38, 1);
+
+    @media (hover: hover) {
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.coins {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+
+  div {
+    position: absolute;
+
+    @media (max-width: $md-3) {
+      display: none;
+    }
+  }
+
+  .tl {
+    top: -25%;
+    left: 0;
+
+    @media (max-width: 1700px) {
+      top: 5%;
+      left: 10%;
+    }
+
+    @media (max-width: 1400px) {
+      top: 0;
+      left: 40px;
+
+      @include adaptiv-value('top', 0, -400, 1);
+    }
+
+    img {
+      @include adaptiv-value('max-width', 220, 120, 1)
+    }
+  }
+
+  .bl {
+    bottom: 0;
+    left: -10%;
+
+    @media (max-width: 1700px) {
+      bottom: 18%;
+      left: 6%;
+    }
+
+    img {
+      max-width: 200px;
+      @include adaptiv-value('max-width', 200, 100, 1);
+    }
+  }
+
+  .br {
+    bottom: -40%;
+    right: -15%;
+
+    @media (max-width: 1700px) {
+      bottom: 0%;
+      right: 0%;
+    }
+
+    img {
+      @include adaptiv-value('max-width', 300, 100, 1)
+    }
+  }
+
+  .tr {
+    top: 15%;
+    right: 2%;
+
+    @media (max-width: 1700px) {
+      top: 20%;
+      right: 13%;
+    }
+
+    @media (max-width: 1400px) {
+      @include adaptiv-value('right', 40, -70, 1);
+      @include adaptiv-value('top', 300, -370, 1);
+    }
+ 
+
+    img {
+      @include adaptiv-value('max-width', 200, 100, 1)
+    }
+  }
+}

@@ -1,0 +1,132 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+
+.timer {
+  display: flex;
+  align-items: center;
+  padding: 0 42px;
+  @include adaptiv-value('margin-top', 35, 15, 1);
+  margin-bottom: 20px;
+
+  @media (max-width: $md-2) {
+    @include adaptiv-value('padding-left', 42, 0, 1);
+    @include adaptiv-value('padding-right', 42, 0, 1);
+  }
+
+  @media (max-width: $md-3) {
+    padding: 0;
+  }
+
+  @media (max-width: $md-4) {
+    gap: 10px;
+  }
+}
+
+.item {
+  position: relative;
+  background: url('../../assets/img/swap/timer.svg') center no-repeat;
+  background-size: cover;
+  width: 144px;
+  height: 127px;
+
+  @media (max-width: $md-3) {
+    &:last-child {
+      display: none;
+    }
+  }
+
+  @media (max-width: $md-4) {
+    @include adaptiv-value('width', 244, 95, 1);
+    @include adaptiv-value('height', 227, 88, 1);
+  }
+}
+
+.time {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+
+  font-size: 12px;
+  text-shadow: 0 0 10px rgba($main, .3);
+
+  translate: -50% 0;
+
+  @media (max-width: $md-4) {
+    top: 7px;
+  }
+}
+
+.value {
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+
+  width: 100%;
+  max-width: 120px;
+  padding: 20px 5px;
+
+  border-radius: 20px;
+  background: linear-gradient(to bottom, rgba($blue, .2), rgba(#0C1237, .2));
+  backdrop-filter: blur(10px);
+
+  font-size: 40px;
+  color: $secondary;
+  text-align: center;
+  text-shadow: 0 0 10px rgba($main, .3);
+
+  translate: -50% 0;
+
+  @media (max-width: $md-4) {
+    font-size: 25px;
+    border-radius: 10px;
+    @include adaptiv-value('max-width', 220, 78, 1);
+    @include adaptiv-value('padding-top', 50, 15, 1);
+    @include adaptiv-value('padding-bottom', 50, 15, 1);
+    @include adaptiv-value('font-size', 70, 25, 1);
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(#253074, .3);
+    border-radius: 20px;
+    pointer-events: none;
+
+    @media (max-width: $md-4) {
+      border-radius: 10px;
+    }
+  }
+
+}
+
+.colon {
+  font-size: 55px;
+  font-family: Arial;
+  margin: 0 30px;
+  color: $secondary;
+  text-shadow: 0 0 10px rgba($secondary, .5);
+
+  @media (max-width: $md-2) {
+    @include adaptiv-value('margin-left', 30, 0, 1);
+    @include adaptiv-value('margin-right', 30, 0, 1);
+  }
+
+  @media (max-width: $md-4) {
+    display: none;
+  }
+}
+
+@media (max-width: $md-3) {
+  .colonSeconds {
+    display: none;
+  }
+}

@@ -1,0 +1,69 @@
+@import '../../scss/mixins';
+@import '../../scss/variables';
+
+.item {
+  &:not(:last-child) {
+    @include adaptiv-value('margin-bottom', 40, 20, 1);
+  }
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 5px;
+  margin-bottom: 5px;
+}
+
+.label {
+  display: flex;
+  align-items: flex-end;
+  color: $secondary;
+  @include adaptiv-value('font-size', 18, 14, 1);
+  text-shadow: 0 0 10px rgba($main, .3);
+
+  img {
+    max-width: 100px;
+
+    @media (max-width: $md-4) {
+      display: none;
+    }
+  }
+}
+
+.precent {
+  position: relative;
+  background: url('../../assets/img/swap/el-right.svg') center no-repeat;
+  background-size: cover;
+  width: 94px;
+  height: 28px;
+
+  span {
+    position: absolute;
+    top: 7px;
+    right: 0;
+    color: $white;
+    @include adaptiv-value('font-size', 18, 16, 1);
+    text-shadow: 2px -1px rgba($blue, .2);
+    opacity: .9;
+  }
+}
+
+.progress {
+  position: relative;
+  width: 100%;
+  border-radius: 4px;
+  background: rgba(#0C1237, .5);
+  border: 1px solid rgba($secondary, .1);
+
+  @include adaptiv-value('height', 15, 10, 1);
+
+  span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 4px;
+    height: inherit;
+  }
+}

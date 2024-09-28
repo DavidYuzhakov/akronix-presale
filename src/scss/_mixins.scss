@@ -1,0 +1,29 @@
+@import 'variables';
+
+@mixin adaptiv-value($property, $startSize, $minSize, $type) {
+  $addSize: $startSize - $minSize;
+  @if $type == 1 {
+      // Если меньше контейнера
+      #{$property}: $startSize + px;
+      @media (max-width: #{$container + px}) {
+          #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$container - 320}));
+      }
+  } @else if $type == 2 {
+      // Если больше контейнера
+      #{$property}: $startSize + px;
+      @media (min-width: #{$container + px}) {
+          #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth - 320}));
+      }
+  } 
+}
+
+@mixin hoverTab ($text, $bg) {
+  background: linear-gradient(to bottom, rgba($bg, 0.2), transparent);
+  color: $text;
+  transition: all 0.3s ease;
+
+  &:hover,
+  &.active {
+    background: linear-gradient(to bottom, rgba($bg, 0.4), transparent);
+  }
+}

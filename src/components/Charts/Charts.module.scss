@@ -1,0 +1,57 @@
+@import '../../scss/template';
+@import '../../scss/variables';
+@import '../../scss/mixins';
+
+.charts {
+  border-radius: 24px;
+  max-width: 656px;
+  height: 100%;
+  width: 100%;
+
+  @extend %bg;
+  @include adaptiv-value('padding-left', 40, 10, 1);
+  @include adaptiv-value('padding-right', 40, 10, 1);
+  @include adaptiv-value('padding-top', 60, 20, 1);
+  @include adaptiv-value('padding-bottom', 60, 25, 1);
+
+  @media (max-width: 1356px) {
+    order: 1;
+  }
+
+  h3 {
+    text-align: center;
+    font-weight: 400;
+    letter-spacing: 5px;
+    line-height: 1.2;
+    color: $white;
+    @include adaptiv-value('font-size', 24, 17, 1);
+    text-shadow: 0 0 10px rgba($secondary, .5), 2px 2px rgba($main, .2);
+  }
+
+  p {
+    text-align: center;
+    line-height: 1.5;
+    font-size: 14px;
+    text-shadow: 0 0 10px rgba($main, .3);
+
+    &:before {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(to right, transparent 0%, $main 50%, transparent 100%);
+      margin: 0 auto;
+
+      @include adaptiv-value('margin-top', 40, 20, 1);
+      @include adaptiv-value('margin-bottom', 20, 10, 1);
+    }
+  }
+}
+
+.el {
+  display: block;
+  margin: 0 auto;
+  @include adaptiv-value('margin-top', 20, 10, 1);
+  @include adaptiv-value('margin-bottom', 40, 20, 1);
+  @include adaptiv-value('width', 275, 200, 1);
+}
