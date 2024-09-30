@@ -6,7 +6,6 @@ import { calculateTimeLeft } from '../../utils/main'
 export function ClaimTab() {
   const { userInfo } = useForm() 
   const targetTime = new Date(userInfo.claim_info.next_unlock_time)
-  // const timeStr = 
   
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(targetTime))
 
@@ -23,8 +22,6 @@ export function ClaimTab() {
 
     return () => clearInterval(intervalId);
   }, [targetTime])
-
-  console.log(timeLeft)
 
   return (
     <div className={styles.claim}>

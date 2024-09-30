@@ -27,8 +27,6 @@ export function Swap () {
     triggerOnce: true
   })
 
-  console.log(date)
-
   useEffect(() => {
     async function fetchPresaleInfo () {
       const { remain_time } = await ProofApi.getPresaleInfo()
