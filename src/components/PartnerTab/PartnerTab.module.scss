@@ -1,0 +1,29 @@
+@import '../../scss/mixins';
+
+.partner {
+  p {
+    margin-bottom: 0;
+  }
+
+  .field {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+
+    img {
+      cursor: pointer;
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  input {
+    max-width: 390px;
+    text-wrap: nowrap;
+    text-overflow: ellipsis;  
+    padding-right: 15px;  
+
+    @include adaptiv-value('font-size', 13, 10, 1); 
+  }
+}

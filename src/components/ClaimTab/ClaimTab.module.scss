@@ -1,0 +1,29 @@
+
+@import '../../scss/mixins';
+@import '../../scss/variables';
+
+.claim {
+  h3 {
+    text-align: center;
+    font-weight: 400;
+    color: $white;
+    @include adaptiv-value('font-size', 20, 16, 1);
+    text-shadow: 2px -1px rgba($blue, .2);
+
+    &:after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(to right, transparent 0%, $main 50%, transparent 100%);
+      margin: 0 auto;
+
+      @include adaptiv-value('margin-top', 20, 10, 1);
+      @include adaptiv-value('margin-bottom', 20, 10, 1);
+    }
+  }
+
+  button {
+    margin-top: 20px;
+  }
+}

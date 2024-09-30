@@ -16,12 +16,26 @@ import { Form } from "../Form"
 import { Charts } from "../Charts"
 import { Parallax } from "react-scroll-parallax"
 import { useInView } from "react-intersection-observer"
+import { useEffect, useState } from "react"
+import { useProofApi } from "../../hooks/useProofApi"
 
 export function Swap () {
+  const ProofApi = useProofApi()
+  const [date, setDate] = useState(new Date())
   const {inView, ref} = useInView({
     threshold: .2,
     triggerOnce: true
   })
+
+  console.log(date)
+
+  useEffect(() => {
+    async function fetchPresaleInfo () {
+      const { remain_time } = await ProofApi.getPresaleInfo()
+      setDate(new Date(remain_time))
+    }
+    fetchPresaleInfo()
+  }, [])
 
   return (
     <section id="swap" ref={ref} className={`${styles.swap} ${inView ? styles._animate : ''}`}>
@@ -45,7 +59,7 @@ export function Swap () {
               <img height={100} src={elTimer} alt="" />
               <img src={elTimer} alt="" />
             </div>
-          <Timer targetTime={new Date('2024-09-18T10:00:00')} />
+          <Timer targetTime={date} />
           <div className={styles.elRight}>
               <img height={100} src={elTimer} alt="" />
               <img src={elTimer} alt="" />

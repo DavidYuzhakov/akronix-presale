@@ -37,8 +37,8 @@ export const charts = [
 ]
 
 export const nft = [
-  { id: 1, score: 150 },
-  { id: 2, score: 250 },
-  { id: 3, score: 1000 },
-  { id: 4, score: 5000 },
+  { id: 1, score: { ton: 50, usdt: 250 } },
+  { id: 2, score: { ton: 150, usdt: 750 } },
+  { id: 3, score: { ton: 500, usdt: 2500 } },
+  { id: 4, score: { ton: 1000, usdt: 5000 } },
 ]
