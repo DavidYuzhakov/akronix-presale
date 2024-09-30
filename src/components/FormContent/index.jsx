@@ -129,7 +129,7 @@ export function FormContent({ available, price, tonPrice }) {
           onClick={() => tabHandler('partner')}
           className={`${styles.tab} ${styles.partner} ${activeTab === 'partner' ? styles.active : ''}`}
         >
-          Партнерка
+          партнеры
         </div>
         <div
           onClick={() => tabHandler('nft')}
