@@ -3,15 +3,17 @@ import usdt from '../../assets/img/swap/usdt.svg'
 import ton from '../../assets/img/swap/ton.svg'
 import { useForm } from '../../context/FormContext'
 import { useAuth } from '../../context/AuthContext'
+import { useTranslation } from 'react-i18next'
 
 export function BuyTab () {
+  const { t } = useTranslation()
   const { isAuth } = useAuth()
   const { updateAmount, balance, amount, setAmount, akron, currency, setCurrency } = useForm()
 
   return (
     <div className={styles.buy}>
       <fieldset>
-        <legend className={'form-text'}>Выберите валюту обмена:</legend>
+        <legend className={'form-text'}>{t('swap.form.tabs.0.paragraph')}</legend>
         <label
           className={`${styles.currency} ${
             currency === 'usdt' ? styles.active : ''
@@ -35,9 +37,9 @@ export function BuyTab () {
       </fieldset>
       <div className={'inputField'}>
         <label htmlFor="amount">
-          <span>{currency} вы платите:</span>
+          <span>{currency} {t('swap.form.tabs.0.inputAmount.label')}</span>
           <span>
-            БАЛАНС: {balance[currency] ?? 0}
+            {t('swap.form.tabs.0.inputAmount.paragraph')} {balance[currency] ?? 0}
           </span>
         </label>
         <input
@@ -49,8 +51,8 @@ export function BuyTab () {
       </div>
       <div className={'inputField'}>
         <label htmlFor="akron">
-          <span>AKRON вы получаете:</span>
-          <button onClick={() => setAmount(balance[currency])} type="button">макс.</button>
+          <span>AKRON {t('swap.form.tabs.0.inputAkron.label')}</span>
+          <button onClick={() => setAmount(balance[currency])} type="button">{t('swap.form.tabs.0.inputAmount.paragraph')}</button>
         </label>
         <input
           id="akron"
@@ -60,7 +62,7 @@ export function BuyTab () {
         />
       </div>
       <button className={'btn'} type="submit">
-        {isAuth ? 'Купить' : 'Подключить кошелек'}
+        {isAuth ? t('swap.form.tabs.0.button.0') : t('swap.form.tabs.0.button.1')}
       </button>
     </div>
   )

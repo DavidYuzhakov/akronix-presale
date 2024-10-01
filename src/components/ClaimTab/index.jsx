@@ -2,8 +2,10 @@ import { useEffect, useState } from 'react'
 import { useForm } from '../../context/FormContext'
 import styles from './ClaimTab.module.scss'
 import { calculateTimeLeft } from '../../utils/main'
+import { useTranslation } from 'react-i18next'
 
 export function ClaimTab() {
+  const { t } = useTranslation()
   const { userInfo } = useForm() 
   const targetTime = new Date(userInfo.claim_info.next_unlock_time)
   
@@ -25,18 +27,18 @@ export function ClaimTab() {
 
   return (
     <div className={styles.claim}>
-      <p className={'form-text'}>всего вы получите</p>
+      <p className={'form-text'}>{t('swap.form.tabs.1.paragraph')}</p>
       <h3>{userInfo.user_info.akron} akron</h3>
       <ul className={'list'}>
         <li>
           <div>
-            <span>Объем разлока:</span>
+            <span>{t('swap.form.tabs.1.list.0.type')}</span>
             <span>{userInfo.claim_info.next_unlock_value}</span>
           </div>
         </li>
         <li>
           <div>
-            <span>Дата разлока:</span>
+            <span>{t('swap.form.tabs.1.list.1.type')}</span>
             <span>
               {timeLeft.days + 'd : ' + timeLeft.hours + 'h : ' + timeLeft.minutes + 'm'}
             </span>
@@ -44,13 +46,13 @@ export function ClaimTab() {
         </li>
         <li>
           <div>
-            <span>Ежемесячный разлок:</span>
+            <span>{t('swap.form.tabs.1.list.2.type')}</span>
             <span>{userInfo.claim_info.monthly_value} AKRON</span>
           </div>
         </li>
         <li>
           <div>
-            <span>всего разлочено:</span>
+            <span>{t('swap.form.tabs.1.list.3.type')}</span>
             <span>{userInfo.claim_info.total_unlocked_value} akron</span>
           </div>
         </li>

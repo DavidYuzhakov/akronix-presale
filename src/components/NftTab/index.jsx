@@ -10,15 +10,17 @@ import arrow from '../../assets/img/nft/arrow.svg'
 import { nft } from '../../data'
 import { ProgressBar } from '../ProgressBar'
 import { useForm } from '../../context/FormContext'
+import { useTranslation } from 'react-i18next'
 
 export function NftTab() {
+  const { t } = useTranslation()
   const [isUsdt, setIsUsdt] = useState(false)
   const { userInfo } = useForm()
 
   return (
     <div className={styles.nft}>
       <div className={styles.nftTop}>
-        <legend>ваш прогресс бонусных NFT:</legend>
+        <legend>{ t('swap.form.tabs.3.paragraph') }</legend>
         <div className={styles.switch}>
           <label className={isUsdt ? styles.active : ''}>
             <img src={usdt} alt="usdt" />
@@ -70,7 +72,7 @@ export function NftTab() {
       </div>
       <div className={'info'}>
         <div className={'card'}>
-          <h5>вы инвестировали:</h5>
+          <h5>{ t('swap.form.tabs.3.cards.0.title') }</h5>
           <p>
             {isUsdt
               ? userInfo.user_info.amount_usdt
@@ -79,7 +81,7 @@ export function NftTab() {
           </p>
         </div>
         <div className={'card'}>
-          <h5>до след. NFT:</h5>
+          <h5>{ t('swap.form.tabs.3.cards.1.title') }</h5>
           <p>
             {isUsdt
               ? `${userInfo.nft_info.remaining_usdt} usdt`

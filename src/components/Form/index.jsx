@@ -5,8 +5,10 @@ import lines from '../../assets/img/swap/lines-form.svg'
 import { FormContent } from '../FormContent'
 import { useEffect, useState } from 'react'
 import { useProofApi } from '../../hooks/useProofApi'
+import { useTranslation } from 'react-i18next'
 
 export function Form() {
+  const { t } = useTranslation()
   const [infoPresale, setInfoPresale] = useState({
     price: 0,
     ton_price: 0
@@ -34,10 +36,10 @@ export function Form() {
   return (
     <div className={styles.block} id="form">
       <div className={styles.head}>
-        <h3>собрано более ${currentAmount}</h3>
+        <h3>{t('swap.form.title.first')} {t('swap.form.title.second')} ${currentAmount}</h3>
         <div className={styles.headLabel}>
-          <span>текущий прогресс:</span>
-          <span>макс <span className={styles.max}>{ maxAmount } usd</span></span>
+          <span>{t('swap.form.progress.0')}</span>
+          <span>{t('swap.form.progress.1')} <span className={styles.max}>{ maxAmount } usd</span></span>
         </div>
         <div className={styles.progress}>
           <span style={{ width: `${100 * (maxAmount / currentAmount)}%` }} />
@@ -50,7 +52,7 @@ export function Form() {
         <img src={lines} alt="" />
       </div>
       <FormContent available={maxAmount - currentAmount} price={infoPresale.price} tonPrice={infoPresale.ton_price} />
-      <p className={styles.text}>для корректной работы с блокчейном реккомендуем использовать кошелек Tonkeeper</p>
+      <p className={styles.text}>{t('swap.form.text')}</p>
     </div>
   )
 }

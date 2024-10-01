@@ -10,8 +10,10 @@ import { rounds } from "../../data"
 import { useState } from "react"
 import { useInView } from "react-intersection-observer"
 import { scrollToBlock } from "../../utils/main"
+import { useTranslation } from "react-i18next"
 
 export function Rounds () {
+  const { t } = useTranslation()
   const {ref, inView} = useInView({
     threshold: .2,
     triggerOnce: true
@@ -21,7 +23,7 @@ export function Rounds () {
     <section id="rounds" ref={ref} className={`${styles.rounds} ${inView ? styles._animate : ''}`}>
       <img className={styles.bg} src={bgImg} alt="" />
       <div className="container">
-        <h2 className="title">три публичных раунда пресейла</h2>
+        <h2 className="title">{t('rounds.title')}</h2>
         <img className={'subtitle-el'} src={elImg} alt="" />
         <div className={styles.cards}>
           {rounds.map((item, i) => {
@@ -38,26 +40,26 @@ export function Rounds () {
                     background: item.active ? '#1BDD15' : '#E91F38',
                     boxShadow: `0 0 10px ${item.active ? '#1BDD15' : '#E91F38'}`
                   }} />
-                <h4>Раунд: №{item.id}</h4>
+                <h4>{t('rounds.item.name')}{item.id}</h4>
                 <img className={styles.arrow} onClick={() => setHide(prev => !prev)} src={arrow} alt="arrow-down" />
               </div>
               <div className={styles.content}>
 
               <div className={styles.token}>
                 <img src={lines} alt="" />
-                <span>токенов к продаже - {item.precent}%</span>
+                <span>{t('rounds.item.paragraph')} {item.precent}%</span>
                 <img src={lines} alt="" />
               </div>
               <div className={styles.line} />
               <div className={styles.deadline}>
-                <p>сроки проведения</p>
+                <p>{t('rounds.item.deadline')}</p>
                 <div>{ item.deadline }</div>
               </div>
               <div className={styles.block}>
                 <button onClick={(e) => item.active ? scrollToBlock(e) : {}} type="button" className={`btn ${styles.btn} ${item.active ? '' : styles.opacity}`}>
-                  {item.active ? 'принять участие' : 'coming soon'}
+                  {item.active ? t('rounds.item.button') : 'coming soon'}
                 </button>
-                <p>TGE: при листинге 50% далее каждый месяц по 10%</p>
+                <p>{t('rounds.item.text')}</p>
               </div>
               </div>
             </div>

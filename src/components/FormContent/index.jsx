@@ -11,11 +11,13 @@ import { useForm } from '../../context/FormContext'
 import { ClaimTab } from '../ClaimTab'
 import { PartnerTab } from '../PartnerTab'
 import { NftTab } from '../NftTab'
+import { useTranslation } from 'react-i18next'
 
 export function FormContent({ available, price, tonPrice }) {
   const ProofApi = useProofApi()
   const TonConnect = useTonConnect()
-
+  
+  const { t } = useTranslation()
   const { isAuth } = useAuth()
   const { showAlert } = useAlert()
   const { currency, amount, balance, setAkron, fetchGetBalance, fetchUserInfo } = useForm()
@@ -117,25 +119,25 @@ export function FormContent({ available, price, tonPrice }) {
           onClick={() => setActiveTab('buy')}
           className={`${styles.tab} ${styles.buy} ${activeTab === 'buy' ? styles.active : ''}`}
         >
-          купить
+          {t('swap.form.tabs.0.tab')}
         </div>
         <div
           onClick={() => tabHandler('claim')}
           className={`${styles.tab} ${styles.claim} ${activeTab === 'claim' ? styles.active : ''}`}
         >
-          CLAIM
+          {t('swap.form.tabs.1.tab')}
         </div>
         <div
           onClick={() => tabHandler('partner')}
           className={`${styles.tab} ${styles.partner} ${activeTab === 'partner' ? styles.active : ''}`}
         >
-          партнеры
+          {t('swap.form.tabs.2.tab')}
         </div>
         <div
           onClick={() => tabHandler('nft')}
           className={`${styles.tab} ${styles.nft} ${activeTab === 'partner' ? styles.active : ''}`}
         >
-          nft
+          {t('swap.form.tabs.3.tab')}
         </div>
       </div>
       {activeTab === 'buy' && <BuyTab />}
@@ -143,8 +145,8 @@ export function FormContent({ available, price, tonPrice }) {
       {activeTab === 'partner' && <PartnerTab />}
       {activeTab === 'info' &&
         <div className={styles.information}>
-          <p className={styles.text}>вы не подключили кошелек:</p>
-          <button onClick={() => setActiveTab('buy')} className='btn' type='button'>подключить кошелек</button>
+          <p className={styles.text}>{ t('swap.form.tabs.4.text') }</p>
+          <button onClick={() => setActiveTab('buy')} className='btn' type='button'>{ t('swap.form.tabs.4.button') }</button>
         </div>
       }
       {activeTab === 'nft' && <NftTab />}

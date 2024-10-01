@@ -17,7 +17,7 @@ export function calculateTimeLeft(targetTime) {
 
 export function scrollToBlock (e) {
   e.preventDefault()
-  const swap = document.getElementById('swap')
+  const swap = document.getElementById('form')
 
   window.scrollTo({
     top: swap.getBoundingClientRect().top + window.scrollY - document.querySelector('.header-wrapper').offsetHeight,

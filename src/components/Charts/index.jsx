@@ -3,16 +3,19 @@ import elImg from "../../assets/icons/sub-el.svg"
 import { charts } from "../../data"
 
 import { ChartItem } from "../ChartItem"
+import { useTranslation } from "react-i18next"
 
 export function Charts () {
+  const { t } = useTranslation()
+
   return (
     <div className={styles.charts}>
-      <h3>Назначение <br />собранных средств</h3>
+      <h3>{t('swap.charts.title.first')} <br />{t('swap.charts.title.second')}</h3>
       <img className={styles.el} src={elImg} alt="" />
       <div className={styles.items}>
-        {charts.map(chart => <ChartItem key={chart.label} {...chart} />)}
+        {charts.map((chart, i) => <ChartItem key={t(`swap.charts.items.${i}`)} {...chart} label={t(`swap.charts.items.${i}`)} />)}
       </div>
-      <p>Распределение TON за любые покупки пользователей на платформе Akronix</p>
+      <p>{t('swap.charts.text')}</p>
     </div>
   )
 }

@@ -15,8 +15,10 @@ import coin2 from '../../assets/img/swap/coin-tr.png'
 import coin3 from '../../assets/img/swap/coin-bl.png'
 import coin4 from '../../assets/img/swap/coin-br.png'
 import { useInView } from 'react-intersection-observer'
+import { useTranslation } from 'react-i18next'
 
 export function Intro() {
+  const { t } = useTranslation()
   const { ref, inView } = useInView({
     threshold: 0.1,
     triggerOnce: true,
@@ -34,8 +36,8 @@ export function Intro() {
       <div className={`container ${styles.container}`}>
         <img className={styles.logo} src={logoImg} alt="logo" />
         <div className={styles.content}>
-          <h1>пресейл токена открыт!</h1>
-          <Button text={'купить akron'} clickHandler />
+          <h1>{t ('intro.title')}</h1>
+          <Button text={t('button')} clickHandler />
           <div className={styles.social}>
             <img src={tgIcon} alt="telegram" />
             <img src={ytIcon} alt="youtube" />

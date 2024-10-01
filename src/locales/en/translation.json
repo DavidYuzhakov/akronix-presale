@@ -1,0 +1,153 @@
+{
+  "button": "buy akron",
+  "navigation": [
+    "akron coin",
+    "presale",
+    "White Paper",
+    "akronix"
+  ],
+  "intro": {
+    "head": {
+      "button-connect": "connect wallet",
+      "copy": "copy address",
+      "disconnect": "disconnect"
+    },
+    "title": "The token's presale is open!"
+  },
+  "about": {
+    "title": "AKRON — is the main token of the Akronix platform",
+    "paragraph": "Akronix platform",
+    "text": {
+      "first": "The AKRON token is a key element of the Akronix cryptocurrency gaming platform on the TON network, providing many functions and features and used for all internal transactions on the site.",
+      "second": "The platform is designed for gamers, game developers, and investors, integrating cryptocurrency into the gaming industry and creating unique opportunities for interaction and monetization."
+    },
+    "cards": [
+      "AKRON contributes to the development of a decentralized gaming ecosystem, making it more innovative, secure, and economically sustainable.",
+      "The token's liquidity and popularity are further supported by the interest and financial turnover within all products of the Arkonix ecosystem.",
+      "AKRON can easily be integrated with other projects and platforms operating on the TON network, expanding its functionality and applicability.",
+      "Active use of AKRON helps to grow and develop the Akronix platform ecosystem, attracting new users and developers."
+    ]
+  },
+  "tokenomic": {
+    "title": "Total supply:",
+    "items": [
+      "10% - Team",
+      "5% - Marketing",
+      "30% - Presale",
+      "10% - Liquidity dex/cex",
+      "3% - Rewards",
+      "42% - Earning Game"
+    ]
+  },
+  "rounds": {
+    "title": "Three public presale rounds",
+    "item": {
+      "name": "Round: #",
+      "paragraph": "Tokens for saling -",
+      "deadline": "Sale period",
+      "button": "participate",
+      "text": "TGE: 50% at listing, then 10% each month"
+    }
+  },
+  "bonus": {
+    "title": "Bonus system",
+    "suptitle": "Your prize:",
+    "text": "Available for your wallet upon purchase:",
+    "button": "get nft"
+  },
+  "swap": {
+    "info": [
+      "Min. Purchase - 1 TON",
+      "Max. Purchase - 5,000 TON per wallet"
+    ],
+    "title": "Last chance to buy Akron:",
+    "timer": {
+      "paragraph": "Until the end of presale:",
+      "days": "days",
+      "hours": "hours",
+      "minutes": "minutes",
+      "seconds": "seconds"
+    },
+    "form": {
+      "title": {
+        "first": "",
+        "second": "raised"
+      },
+      "progress": ["current progress", "max"],
+      "text": "For correct work with the blockchain, we recommend using the Tonkeeper wallet",
+      "tabs": [
+        {
+          "tab": "buy",
+          "paragraph": "Select exchange currency:",
+          "inputAmount": {
+            "label": "you pay:",
+            "paragraph": "balance: "
+          },
+          "inputAkron": {
+            "label": "you receive:",
+            "paragraph": "max."
+          },
+          "button": ["buy akron", "connect"]
+        },
+        {
+          "tab": "CLAIM",
+          "paragraph": "total you will receive",
+          "list": [
+            { "type": "Unlock volume:" },
+            { "type": "before unlocking:" },
+            { "type": "Monthly unlock:" },
+            { "type": "Total unlocked:" }
+          ]
+        },
+        {
+          "tab": "partnership",
+          "paragraph": "your affiliate link:",
+          "list": [
+            { "type": "Total partners:" },
+            { "type": "Partners invested:" }
+          ],
+          "cards": [
+            { "title": "you earned:" },
+            { "title": "claim available:" }
+          ]
+        },
+        {
+          "tab": "nft",
+          "paragraph": "Your bonus NFT progress:",
+          "cards": [
+            { "title": "you invested:" },
+            { "title": "until the next NFT:" }
+          ]
+        },
+        {
+          "text": "you didn't  connected your wallet:",
+          "button": "connect a wallet"
+        }
+      ]
+    },
+    "charts": {
+      "title": {
+        "first": "Allocation of",
+        "second": "collected funds"
+      },
+      "text": "Distribution of TON for any purchases made by users on the Akronix platform",
+      "items": [
+        "Liquidity DEX",
+        "Listing CEX",
+        "Development",
+        "Community Awards",
+        "Marketing",
+        "Team"
+      ]
+    }
+  },
+  "article": {
+    "title": {
+      "first": "Don't miss presale updates,",
+      "second": "follow us on social media!"
+    }
+  },
+  "footer": {
+    "agreement": "user agreement"
+  }
+}

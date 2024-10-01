@@ -7,8 +7,10 @@ import elImg from "../../assets/icons/sub-el.svg"
 import ton from '../../assets/img/swap/ton.svg';
 import usdt from '../../assets/img/swap/usdt.svg';
 import { gotoHandler, scrollToBlock } from "../../utils/main";
+import { useTranslation } from "react-i18next";
 
 export function Bonus () {
+  const { t } = useTranslation() 
   const {ref, inView} = useInView({
     threshold: .1,
     triggerOnce: true
@@ -17,7 +19,7 @@ export function Bonus () {
   return (
     <section ref={ref} className={`${styles.bonus} ${inView ? styles._animate : ''}`}>
       <div className="container">
-        <h2 className="title">бонусная система</h2>
+        <h2 className="title">{t('bonus.title')}</h2>
         <img className={'subtitle-el'} src={elImg} alt="" />
         <div className={styles.cards}>
           {bonus.map((item, i) => (
@@ -38,9 +40,9 @@ export function Bonus () {
               }} className={styles.img}>
                 <span style={{ boxShadow: `0 0 70px 0 ${item.color}` }} />
               </div>
-              <span>ваш приз:</span>
+              <span>{t('bonus.suptitle')}</span>
               <h4>{ item.title }</h4>
-              <p>доступен для вашего кошелька при покупке:</p>
+              <p>{t('bonus.text')}</p>
               <div className={styles.currency}>
                 <div className={styles.buy}>
                   <img src={ton} alt="ton" />
@@ -52,7 +54,7 @@ export function Bonus () {
                 </div>
               </div>
               <button onClick={(e) => scrollToBlock(e, 'form')} className={`btn`} type="button">
-                получить nft
+                {t('bonus.button')}
               </button>
             </div>
           ))}

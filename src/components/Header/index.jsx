@@ -23,6 +23,7 @@ import logoutIcon from '../../assets/icons/logout.svg'
 import { useAuth } from '../../context/AuthContext'
 import { useProofApi } from '../../hooks/useProofApi'
 import useTonConnect from '../../hooks/useTonConnect'
+import { useTranslation } from 'react-i18next'
 
 const list = [
   { name: 'rus', img: rusImg },
@@ -34,6 +35,7 @@ export function Header() {
     threshold: 1,
     triggerOnce: true,
   })
+  const { i18n, t } = useTranslation()
   const [tonConnectUI] = useTonConnectUI()
   const { isAuth, setIsAuth, logout } = useAuth()
   const userFriendlyAddress = useTonAddress()
@@ -56,6 +58,11 @@ export function Header() {
     } else {
       setLang(name)
       setOpen(false)
+
+      i18n.changeLanguage(name)
+      const searchParams = new URLSearchParams(window.location.search)
+      searchParams.set('lang', name)
+      window.history.replaceState(null, '', `?${searchParams.toString()}`)
     }
   }
   const handleScroll = () => {
@@ -110,7 +117,6 @@ export function Header() {
     if (isAuth) {
       TonConnect.fetchAuthUser()
     } else if (tonConnectUI.connected) {
-      console.log('disconect #1')
       tonConnectUI.disconnect()
     }
   }, [isAuth])
@@ -181,16 +187,16 @@ export function Header() {
             <nav className={isActive ? styles.active : ''}>
               <ul>
                 <li onClick={(e) => gotoHandler(e, 'about')}>
-                  <a href="!#">о акрон коин</a>
+                  <a href="!#">{t('navigation.0')}</a>
                 </li>
                 <li onClick={(e) => gotoHandler(e, 'rounds')}>
-                  <a href="!#">пресейл</a>
+                  <a href="!#">{t('navigation.1')}</a>
                 </li>
                 <li>
-                  <a href="https://axiomabio.com/pdf/test.pdf">паппер</a>
+                  <a href="https://axiomabio.com/pdf/test.pdf">{t('navigation.2')}</a>
                 </li>
                 <li>
-                  <a href="https://akronix.io">о акроникс</a>
+                  <a href="https://akronix.io">{t('navigation.3')}</a>
                 </li>
               </ul>
               <div className={styles.social}>
@@ -206,7 +212,7 @@ export function Header() {
               </div>
 
               <button onClick={connectHandler} className={`${styles.btnMenu} btn`} type="button">
-                {isAuth ? tonAddress : 'подключить кошелек'}
+                {isAuth ? tonAddress : t('intro.head.button-connect')}
               </button>
               {isAuth && (
                 <ul className={styles.tonOptionsMb}>
@@ -254,7 +260,7 @@ export function Header() {
                 className={`${styles.button} btn`}
                 type="button"
               >
-                {isAuth ? tonAddress : 'подключить кошелек'}
+                {isAuth ? tonAddress : t('intro.head.button-connect')}
               </button>
               {isAuth && (
                 <ul
@@ -282,7 +288,7 @@ export function Header() {
                       </svg>
                     )}
 
-                    <span>Copy address</span>
+                    <span>copy address</span>
                   </li>
                   <li onClick={disconnectHandler}>
                     <svg

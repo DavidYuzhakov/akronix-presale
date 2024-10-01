@@ -18,10 +18,13 @@ import { Parallax } from "react-scroll-parallax"
 import { useInView } from "react-intersection-observer"
 import { useEffect, useState } from "react"
 import { useProofApi } from "../../hooks/useProofApi"
+import { useTranslation } from "react-i18next"
 
 export function Swap () {
   const ProofApi = useProofApi()
   const [date, setDate] = useState(new Date())
+
+  const { t } = useTranslation()
   const {inView, ref} = useInView({
     threshold: .2,
     triggerOnce: true
@@ -42,15 +45,15 @@ export function Swap () {
         <div className={styles.info}>
           <div className={styles.infoItem}>
             <img src={icon} alt="icon info" />
-            <span>Мин. Покупка - 1 TON</span>
+            <span>{t('swap.info.0')}</span>
           </div>
           <div className={styles.infoItem}>
             <img src={icon} alt="icon info" />
-            <span>макс. Покупка - 5 000 ton на 1 кошелек</span>
+            <span>{t('swap.info.1')}</span>
           </div>
         </div>
         <div className={styles.container}>
-        <h2 className="title">последний шанс купить akron:</h2>
+        <h2 className="title">{t('swap.title')}</h2>
         <img className={'subtitle-el'} src={elImg} alt="" />
         <div className={styles.timer}>
           <div className={styles.elLeft}>
@@ -59,13 +62,13 @@ export function Swap () {
             </div>
           <Timer targetTime={date} />
           <div className={styles.elRight}>
-              <img height={100} src={elTimer} alt="" />
-              <img src={elTimer} alt="" />
-            </div>
+            <img height={100} src={elTimer} alt="" />
+            <img src={elTimer} alt="" />
+          </div>
           <img className={styles.pattern} src={patternBg} alt="" />
           <img className={styles.timerLines} src={linesBg} alt="" />
         </div>
-        <p className={styles.timerText}>до конца пресейла:</p>
+        <p className={styles.timerText}>{t('swap.timer.paragraph')}</p>
         <div className={styles.coins}>
           <Parallax easing={"easeInOut"} speed={-10} className={styles.tl}>
             <img src={coin1} alt="coin" />
