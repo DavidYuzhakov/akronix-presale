@@ -42,7 +42,7 @@ export function About () {
                 transition: `all .4s ease-in-out ${(i + 1) / 2 - .5}s`,
               }}
             >
-              <img src={`/akronix-presale/about/${i + 1}.svg`} alt="icon" />
+              <img src={`/about/${i + 1}.svg`} alt="icon" />
               <p>{ t(`about.cards.${i}`) }</p>
             </div>
           ))}
@@ -56,7 +56,7 @@ export function About () {
                 transition: `all .4s ease-in-out ${(i + 3) / 2 - .5}s`,
               }}
             >
-              <img src={`/akronix-presale/about/${i + 3}.svg`} alt="icon" />
+              <img src={`/about/${i + 3}.svg`} alt="icon" />
               <p>{ t(`about.cards.${i + 2}`) }</p>
             </div>
           ))}

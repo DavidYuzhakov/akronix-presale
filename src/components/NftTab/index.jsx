@@ -63,7 +63,7 @@ export function NftTab() {
               </div>
               <img
                 className={styles.char}
-                src={`/akronix-presale/nft/${card.id}.png`}
+                src={`/nft/${card.id}.png`}
                 alt="character"
               />
             </div>

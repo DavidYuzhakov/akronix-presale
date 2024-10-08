@@ -36,7 +36,7 @@ export function Bonus () {
                 className={styles.gradient} 
               />
               <div style={{ 
-                backgroundImage: `url(/akronix-presale/bonus/${item.id}.png)`,
+                backgroundImage: `url(/bonus/${item.id}.png)`,
               }} className={styles.img}>
                 <span style={{ boxShadow: `0 0 70px 0 ${item.color}` }} />
               </div>

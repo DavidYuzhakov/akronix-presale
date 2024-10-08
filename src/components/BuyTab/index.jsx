@@ -52,7 +52,7 @@ export function BuyTab () {
       <div className={'inputField'}>
         <label htmlFor="akron">
           <span>AKRON {t('swap.form.tabs.0.inputAkron.label')}</span>
-          <button onClick={() => setAmount(balance[currency])} type="button">{t('swap.form.tabs.0.inputAmount.paragraph')}</button>
+          <button onClick={() => setAmount(balance[currency])} type="button">{t('swap.form.tabs.0.inputAkron.paragraph')}</button>
         </label>
         <input
           id="akron"

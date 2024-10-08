@@ -33,7 +33,7 @@ export function FormProvider({ children }) {
     setTimeout(() => {
       setIsCopied(false)
     }, 1500)
-    navigator.clipboard.writeText(reference)
+    navigator.clipboard.writeText(userInfo.invite_link)
   }
 
   return (

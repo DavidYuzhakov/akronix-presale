@@ -22,7 +22,7 @@ export function Tokenomic () {
         <img className={styles.el} src={elImg} alt="element" />
         <h2 className="title">{t('tokenomic.title')} <br />100 000 000 000</h2>
         <div className={styles.items}>
-          {tokenomic.map(({ color, text }, i) => (
+          {tokenomic.map(({ color, value }, i) => (
             <div 
               key={color} 
               className={styles.item}
@@ -39,7 +39,7 @@ export function Tokenomic () {
               </div>
               <div className={styles.info}>
                 <h5>{ t(`tokenomic.items.${i}`) }</h5>
-                <span>= 2 125 000 akron</span>
+                <span>= { value } akron</span>
               </div>
             </div>
           ))}

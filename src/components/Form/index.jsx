@@ -33,6 +33,9 @@ export function Form() {
     return () => clearInterval(subscribe)
   }, [])
 
+  console.log(parseInt(maxAmount / currentAmount))
+  console.log(maxAmount)
+
   return (
     <div className={styles.block} id="form">
       <div className={styles.head}>
@@ -42,7 +45,7 @@ export function Form() {
           <span>{t('swap.form.progress.1')} <span className={styles.max}>{ maxAmount } usd</span></span>
         </div>
         <div className={styles.progress}>
-          <span style={{ width: `${100 * (maxAmount / currentAmount)}%` }} />
+          <span style={{ width: `${100 * ((currentAmount) / maxAmount)}%` }} />
         </div>
       </div>
       <img className={styles.el} src={el} alt="" />

@@ -6,12 +6,12 @@ export const about = [
 ]
 
 export const tokenomic = [
-  {color: '#FFD233', text: '10% - Команда'},
-  {color: '#D23592', text: '5% - Маркетинг'},
-  {color: '#1BDD15', text: '30% - пресейл'},
-  {color: '#FF9501', text: '10% - Ликвидность dex/cex'},
-  {color: '#076CE9', text: '3% - Вознаграждения'},
-  {color: '#E91F38', text: '42% - Earning Game'},
+  {color: '#FFD233', value: '10 000 000 000'},
+  {color: '#D23592', value: '5 000 000 000'},
+  {color: '#1BDD15', value: '30 000 000 000'},
+  {color: '#FF9501', value: '10 000 000 000'},
+  {color: '#076CE9', value: '3 000 000 000'},
+  {color: '#E91F38', value: '42 000 000 000'},
 ]
 
 export const rounds = [
