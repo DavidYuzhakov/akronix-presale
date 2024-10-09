@@ -63,6 +63,7 @@
     "title": "последний шанс купить akron:",
     "timer": {
       "paragraph": "до конца пресейла:",
+      "paragraph_start": "до начала пресейла:",
       "days": "дней",
       "hours": "часов",
       "minutes": "минут",

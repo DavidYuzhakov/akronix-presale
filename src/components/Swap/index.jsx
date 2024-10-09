@@ -24,6 +24,7 @@ export function Swap () {
   const ProofApi = useProofApi()
   const [date, setDate] = useState(new Date())
 
+  const [started, setStarted] = useState(false)
   const { t } = useTranslation()
   const {inView, ref} = useInView({
     threshold: .2,
@@ -32,8 +33,9 @@ export function Swap () {
 
   useEffect(() => {
     async function fetchPresaleInfo () {
-      const { remain_time } = await ProofApi.getPresaleInfo()
+      const { remain_time, presale_started } = await ProofApi.getPresaleInfo()
       setDate(new Date(remain_time))
+      setStarted(presale_started)
     }
     fetchPresaleInfo()
   }, [])
@@ -68,7 +70,7 @@ export function Swap () {
           <img className={styles.pattern} src={patternBg} alt="" />
           <img className={styles.timerLines} src={linesBg} alt="" />
         </div>
-        <p className={styles.timerText}>{t('swap.timer.paragraph')}</p>
+        <p className={styles.timerText}>{started === true ? t('swap.timer.paragraph') : t('swap.timer.paragraph_start')}</p>
         <div className={styles.coins}>
           <Parallax easing={"easeInOut"} speed={-10} className={styles.tl}>
             <img src={coin1} alt="coin" />
