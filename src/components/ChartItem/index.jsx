@@ -2,7 +2,6 @@ import styles from "./ChartItem.module.scss"
 import leftEl from "../../assets/img/swap/el-left.svg";
 
 export function ChartItem ({ label, precent, color }) {
-  console.log(precent)
   return (
     <div className={styles.item}>
       <div className={styles.head}>

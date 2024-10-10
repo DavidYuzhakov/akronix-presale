@@ -33,9 +33,6 @@ export function Form() {
     return () => clearInterval(subscribe)
   }, [])
 
-  console.log(parseInt(maxAmount / currentAmount))
-  console.log(maxAmount)
-
   return (
     <div className={styles.block} id="form">
       <div className={styles.head}>

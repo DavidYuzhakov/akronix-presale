@@ -32,7 +32,6 @@ const useTonConnect = () => {
       logout()
 
       if (tonConnectUI.connected) {
-        console.log('discconect #2')
         await tonConnectUI.disconnect()
       }
     }
