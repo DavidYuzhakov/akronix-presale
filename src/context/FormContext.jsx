@@ -1,8 +1,15 @@
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
 import { useProofApi } from '../hooks/useProofApi'
+import { IS_CLOSED } from '../App'
 
 const FormContext = createContext(null)
-export const useForm = () => useContext(FormContext)
+export const useForm = () => { 
+  const context = useContext(FormContext)
+  if (!context) {
+    throw new Error('useForm have not context')
+  } 
+  return context
+}
 export function FormProvider({ children }) {
   const ProofApi = useProofApi()
 
@@ -12,6 +19,7 @@ export function FormProvider({ children }) {
   const [userInfo, setUserInfo] = useState({})
   const [isCopied, setIsCopied] = useState(false)
   const [currency, setCurrency] = useState('usdt')
+  const [infoPresale, setInfoPresale] = useState(null)
 
   function updateAmount(e) {
     const value = e.target.value
@@ -20,7 +28,7 @@ export function FormProvider({ children }) {
   }
 
   async function fetchUserInfo() {
-    const info = await ProofApi.getUserInfo()
+    const info = await ProofApi.getUserInfo(IS_CLOSED)
     setUserInfo(info)
   }
   async function fetchGetBalance() {
@@ -36,9 +44,23 @@ export function FormProvider({ children }) {
     navigator.clipboard.writeText(userInfo.invite_link)
   }
 
+  useEffect(() => {
+    async function fetchInfo () {
+      const info = await ProofApi.getPresaleInfo(IS_CLOSED)
+      setInfoPresale(info)
+    }
+    fetchInfo()
+
+    const subscribe = setInterval(() => {
+      fetchInfo()
+    }, 20000);
+
+    return () => clearInterval(subscribe)
+  }, [])
+
   return (
     <FormContext.Provider
-      value={{ updateAmount, amount, setAmount, fetchUserInfo, fetchGetBalance, balance, akron, setAkron, userInfo, currency, setCurrency, copyHandler, isCopied }}
+      value={{ updateAmount, amount, setAmount, fetchUserInfo, fetchGetBalance, balance, akron, setAkron, userInfo, currency, setCurrency, copyHandler, isCopied, infoPresale }}
     >
       {children}
     </FormContext.Provider>

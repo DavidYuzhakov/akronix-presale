@@ -11,13 +11,19 @@ import { useState } from "react"
 import { useInView } from "react-intersection-observer"
 import { scrollToBlock } from "../../utils/main"
 import { useTranslation } from "react-i18next"
+import { useForm } from "../../context/FormContext"
+import { IS_CLOSED } from "../../App"
 
 export function Rounds () {
   const { t } = useTranslation()
+  const { infoPresale } = useForm()
+  const started = infoPresale?.presale_started
   const {ref, inView} = useInView({
     threshold: .2,
     triggerOnce: true
   })
+
+  const data = IS_CLOSED ? rounds.slice(0, 1) : rounds
 
   return (
     <section id="rounds" ref={ref} className={`${styles.rounds} ${inView ? styles._animate : ''}`}>
@@ -26,8 +32,9 @@ export function Rounds () {
         <h2 className="title">{t('rounds.title')}</h2>
         <img className={'subtitle-el'} src={elImg} alt="" />
         <div className={styles.cards}>
-          {rounds.map((item, i) => {
+          {data.map((item, i) => {
             const [hide, setHide] = useState(i !== 0 && window.innerWidth <= 768)
+            const isActive = started && infoPresale?.round_number === i + 1
 
             return (
             <div key={item.id} className={`${styles.card} ${hide ? styles.hide : ''}`}>
@@ -37,8 +44,8 @@ export function Rounds () {
               <div className={styles.head}>
                 <span 
                   style={{ 
-                    background: item.active ? '#1BDD15' : '#E91F38',
-                    boxShadow: `0 0 10px ${item.active ? '#1BDD15' : '#E91F38'}`
+                    background: isActive ? '#1BDD15' : '#E91F38',
+                    boxShadow: `0 0 10px ${isActive ? '#1BDD15' : '#E91F38'}`
                   }} />
                 <h4>{t('rounds.item.name')}{item.id}</h4>
                 <img className={styles.arrow} onClick={() => setHide(prev => !prev)} src={arrow} alt="arrow-down" />
@@ -56,8 +63,8 @@ export function Rounds () {
                 <div>{ item.deadline }</div>
               </div>
               <div className={styles.block}>
-                <button onClick={(e) => item.active ? scrollToBlock(e) : {}} type="button" className={`btn ${styles.btn} ${item.active ? '' : styles.opacity}`}>
-                  {item.active ? t('rounds.item.button') : 'coming soon'}
+                <button onClick={(e) => isActive ? scrollToBlock(e) : {}} type="button" className={`btn ${styles.btn} ${isActive ? '' : styles.opacity}`}>
+                  {isActive ? t('rounds.item.button') : 'coming soon'}
                 </button>
                 <p>{t('rounds.item.text')}</p>
               </div>

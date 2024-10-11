@@ -36,18 +36,22 @@ export const useProofApi = () => {
     }
   }
 
-  const getPresaleInfo = async () => {
+  const getPresaleInfo = async (closed = false) => {
     try {
-      const { data } = await axios.get('/presale/getPresaleInfo')
+      const { data } = await axios.get('/presale/getPresaleInfo', {
+        params: { closed }
+      })
       return data
     } catch (err) {
       console.log('Failed to get presale info', err)
     }
   }
 
-  const getUserInfo = async () => {
+  const getUserInfo = async (closed = false) => {
     try {
-      const { data } = await axios.get('/presale/getUserInfo')
+      const { data } = await axios.get('/presale/getUserInfo', {
+        params: { closed }
+      })
       return data
     } catch (err) {
       console.log('Failed to get user info', err)

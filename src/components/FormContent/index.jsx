@@ -12,6 +12,7 @@ import { ClaimTab } from '../ClaimTab'
 import { PartnerTab } from '../PartnerTab'
 import { NftTab } from '../NftTab'
 import { useTranslation } from 'react-i18next'
+import { IS_CLOSED } from '../../App'
 
 export function FormContent({ available, price, tonPrice }) {
   const ProofApi = useProofApi()
@@ -51,7 +52,7 @@ export function FormContent({ available, price, tonPrice }) {
 
         if (amountInUsd) {
           const txFillInfo = await ProofApi.getTxFill({
-            type: currency === 'ton' ? 1 : 2,
+            type: currency === currency === 'ton' ? (IS_CLOSED ? 3 : 1) : (IS_CLOSED ? 4 : 2),
             amount: parseFloat(amount)
           })
           const { success } = await TonConnect.fetchSendTransaction(txFillInfo.receiver, txFillInfo.amount, txFillInfo.payload)

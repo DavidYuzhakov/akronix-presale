@@ -16,29 +16,19 @@ import { Form } from "../Form"
 import { Charts } from "../Charts"
 import { Parallax } from "react-scroll-parallax"
 import { useInView } from "react-intersection-observer"
-import { useEffect, useState } from "react"
-import { useProofApi } from "../../hooks/useProofApi"
 import { useTranslation } from "react-i18next"
+import { useForm } from "../../context/FormContext"
 
 export function Swap () {
-  const ProofApi = useProofApi()
-  const [date, setDate] = useState(new Date())
+  const { infoPresale } = useForm()
+  const date = new Date(infoPresale?.remain_time)
+  const started = infoPresale?.presale_started
 
-  const [started, setStarted] = useState(false)
   const { t } = useTranslation()
   const {inView, ref} = useInView({
     threshold: .2,
     triggerOnce: true
   })
-
-  useEffect(() => {
-    async function fetchPresaleInfo () {
-      const { remain_time, presale_started } = await ProofApi.getPresaleInfo()
-      setDate(new Date(remain_time))
-      setStarted(presale_started)
-    }
-    fetchPresaleInfo()
-  }, [])
 
   return (
     <section id="swap" ref={ref} className={`${styles.swap} ${inView ? styles._animate : ''}`}>

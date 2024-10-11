@@ -6,32 +6,13 @@ import { FormContent } from '../FormContent'
 import { useEffect, useState } from 'react'
 import { useProofApi } from '../../hooks/useProofApi'
 import { useTranslation } from 'react-i18next'
+import { useForm } from '../../context/FormContext'
 
 export function Form() {
   const { t } = useTranslation()
-  const [infoPresale, setInfoPresale] = useState({
-    price: 0,
-    ton_price: 0
-  })
-  const [maxAmount, setMaxAmount] = useState(null)
-  const [currentAmount, setCurrentAmount] = useState(null)
-  const ProofApi = useProofApi()
-
-  useEffect(() => {
-    async function fetchInfo () {
-      const info = await ProofApi.getPresaleInfo()
-      setMaxAmount(info.max_amount * info.price)
-      setCurrentAmount(info.current_amount * info.price)
-      setInfoPresale({ price: info.price, ton_price: info.ton_price}) 
-    }
-    fetchInfo()
-
-    const subscribe = setInterval(() => {
-      fetchInfo()
-    }, 20000);
-
-    return () => clearInterval(subscribe)
-  }, [])
+  const { infoPresale } = useForm()
+  const maxAmount = infoPresale?.max_amount * infoPresale?.price
+  const currentAmount = infoPresale?.current_amount * infoPresale?.price
 
   return (
     <div className={styles.block} id="form">
@@ -48,10 +29,10 @@ export function Form() {
       <img className={styles.el} src={el} alt="" />
       <div className={styles.fragment}>
         <img src={lines} alt="" />
-        <span className={styles.price}>1 akron = ${infoPresale.price ? infoPresale.price : '...'}</span>
+        <span className={styles.price}>1 akron = ${infoPresale?.price || '...'}</span>
         <img src={lines} alt="" />
       </div>
-      <FormContent available={maxAmount - currentAmount} price={infoPresale.price} tonPrice={infoPresale.ton_price} />
+      <FormContent available={maxAmount - currentAmount} price={infoPresale?.price} tonPrice={infoPresale?.ton_price} />
       <p className={styles.text}>{t('swap.form.text')}</p>
     </div>
   )
