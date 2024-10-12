@@ -38,7 +38,7 @@ export function PartnerTab() {
         <div className={'card'}>
           <h5>{t('swap.form.tabs.2.cards.1.title')}</h5>
           <p>{userInfo.user_info.available_tons} ton</p>
-          <p>{userInfo.user_info.available_tons} usdt</p>
+          <p>{userInfo.user_info.available_usdt} usdt</p>
         </div>
       </div>
       <button className="btn" type="submit">
