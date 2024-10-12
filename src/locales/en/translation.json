@@ -1,11 +1,6 @@
 {
   "button": "buy akron",
-  "navigation": [
-    "akron coin",
-    "presale",
-    "White Paper",
-    "akronix"
-  ],
+  "navigation": ["akron coin", "presale", "White Paper", "akronix"],
   "intro": {
     "head": {
       "button-connect": "connect wallet",
@@ -56,10 +51,7 @@
     "button": "get nft"
   },
   "swap": {
-    "info": [
-      "Min. Purchase - 1 TON",
-      "Max. Purchase - 5,000 TON per wallet"
-    ],
+    "info": ["Min. Purchase - 1 TON", "Max. Purchase - 5,000 TON per wallet"],
     "title": "Last chance to buy Akron:",
     "timer": {
       "paragraph": "Until the end of presale:",
@@ -107,10 +99,7 @@
             { "type": "Total partners:" },
             { "type": "Partners invested:" }
           ],
-          "cards": [
-            { "title": "you earned:" },
-            { "title": "claim available:" }
-          ]
+          "cards": [{ "title": "you earned:" }, { "title": "claim available:" }]
         },
         {
           "tab": "nft",
@@ -150,5 +139,24 @@
   },
   "footer": {
     "agreement": "user agreement"
+  },
+  "alert": {
+    "buy": {
+      "handler": [
+        "Invalid total amount",
+        "Insufficient funds, please top up your balance"
+      ],
+      "availabel": "Exceeded the allowable number of tokens",
+      "success": "Transaction sent successfully",
+      "error": "Failed to complete the transaction, please try again later"
+    },
+    "partner": {
+      "success": "Claim rewards successfully completed",
+      "error": "Failed to complete the claim rewards, please try again later"
+    },
+    "nft": {
+      "success": "Claim NFT successfully completed",
+      "error": "Failed to complete the claim NFT, please try again later"
+    }
   }
 }

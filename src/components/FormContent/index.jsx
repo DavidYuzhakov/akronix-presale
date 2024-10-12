@@ -21,17 +21,17 @@ export function FormContent({ available, price, tonPrice }) {
   const { t } = useTranslation()
   const { isAuth } = useAuth()
   const { showAlert } = useAlert()
-  const { currency, amount, balance, setAkron, fetchGetBalance, fetchUserInfo } = useForm()
+  const { currency, amount, balance, setAkron, fetchGetBalance, fetchUserInfo, userInfo } = useForm()
 
   const [activeTab, setActiveTab] = useState('buy')
   const [isSuccess, setIsSuccess] = useState(false)
 
   function buyHandler (cur, min, max) {
     if (amount < min || amount > max) {
-      return showAlert(`Общее количество должно быть не менее ${min} ${cur} и не более ${max}`)
+      return showAlert(t('alert.buy.handler.0'))
     }
     if (balance[cur] < amount) {
-      return showAlert('Недостаточно средств, пополните баланс')
+      return showAlert(t('alert.buy.handler.0'))
     }
 
     return cur === 'ton' ? amount * tonPrice : amount
@@ -47,7 +47,7 @@ export function FormContent({ available, price, tonPrice }) {
         const limits = currency === 'ton' ? [0.5, 5000] : [5, 25000]
         const amountInUsd = buyHandler(currency, ...limits)
         if (available < amountInUsd) {
-          return showAlert(`Максимальное кол-во токенов, которые вы можете купить - ${available}$, у вас ${amountInUsd}`)
+          return showAlert(t('alert.buy.availabel'))
         }
 
         if (amountInUsd) {
@@ -58,10 +58,10 @@ export function FormContent({ available, price, tonPrice }) {
           const { success } = await TonConnect.fetchSendTransaction(txFillInfo.receiver, txFillInfo.amount, txFillInfo.payload)
           if (success) {
             setIsSuccess(true)
-            return showAlert('Транзакция успешно отправилась', 'success')
+            return showAlert(t('alert.buy.success'), 'success')
           } else {
             setIsSuccess(false)
-            return showAlert('Неудалось совершить транзакцию, попробуйте позже')
+            return showAlert(t('alert.buy.error'))
           }
         }
       }
@@ -71,24 +71,26 @@ export function FormContent({ available, price, tonPrice }) {
         const { success } = await TonConnect.fetchSendTransaction(txFillInfo.receiver, txFillInfo.amount, txFillInfo.payload)
         if (success) {
           setIsSuccess(true)
-          return showAlert('Клеим вознаграждения успешно выполнился', 'success')
+          return showAlert(t('alert.partner.success'), 'success')
         } else {
           setIsSuccess(false)
-          return showAlert('Неудалось совершить клеим вознаграждения, попробуйте позже')
+          return showAlert(t('alert.partner.error'))
         }
       }
     } else if (type === 'nft') {
-      const txFillInfo = await ProofApi.getTxFill({ 
-        type: 2001, 
-        amount: 0 
-      })
-      const { success } = await TonConnect.fetchSendTransaction(txFillInfo.receiver, txFillInfo.amount, txFillInfo.payload)
-      if (success) {
-        setIsSuccess(true)
-        return showAlert('Клеим nft успешно выполнился', 'success')
-      } else {
-        setIsSuccess(false)
-        return showAlert('Неудалось совершить клеим nft, попробуйте позже')
+      if (userInfo.nft_info.claimed_nfts.some(nft => nft)) {
+        const txFillInfo = await ProofApi.getTxFill({ 
+          type: 2001, 
+          amount: 0 
+        })
+        const { success } = await TonConnect.fetchSendTransaction(txFillInfo.receiver, txFillInfo.amount, txFillInfo.payload)
+        if (success) {
+          setIsSuccess(true)
+          return showAlert(t('alert.nft.success'), 'success')
+        } else {
+          setIsSuccess(false)
+          return showAlert(t('alert.nft.error'))
+        }
       }
     }
   }
