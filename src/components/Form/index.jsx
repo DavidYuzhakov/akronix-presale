@@ -17,13 +17,13 @@ export function Form() {
   return (
     <div className={styles.block} id="form">
       <div className={styles.head}>
-        <h3>{t('swap.form.title.first')} {t('swap.form.title.second')} ${currentAmount}</h3>
+        <h3>{t('swap.form.title.first')} {t('swap.form.title.second')} ${ parseFloat(currentAmount.toFixed(2))}</h3>
         <div className={styles.headLabel}>
           <span>{t('swap.form.progress.0')}</span>
-          <span>{t('swap.form.progress.1')} <span className={styles.max}>{ maxAmount } usd</span></span>
+          <span>{t('swap.form.progress.1')} <span className={styles.max}>{ Math.round(maxAmount) } usd</span></span>
         </div>
         <div className={styles.progress}>
-          <span style={{ width: `${100 * ((currentAmount) / maxAmount)}%` }} />
+          <span style={{ width: `${100 * ((currentAmount) / Math.round(maxAmount))}%` }} />
         </div>
       </div>
       <img className={styles.el} src={el} alt="" />

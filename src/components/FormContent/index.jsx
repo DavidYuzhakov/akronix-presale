@@ -52,7 +52,7 @@ export function FormContent({ available, price, tonPrice }) {
 
         if (amountInUsd) {
           const txFillInfo = await ProofApi.getTxFill({
-            type: currency === currency === 'ton' ? (IS_CLOSED ? 3 : 1) : (IS_CLOSED ? 4 : 2),
+            type: currency === 'ton' ? (IS_CLOSED ? 3 : 1) : (IS_CLOSED ? 4 : 2),
             amount: parseFloat(amount)
           })
           const { success } = await TonConnect.fetchSendTransaction(txFillInfo.receiver, txFillInfo.amount, txFillInfo.payload)
@@ -66,7 +66,8 @@ export function FormContent({ available, price, tonPrice }) {
         }
       }
     } else if (type === 'partner') {
-      if (userInfo.can_claim_ref_rewards) {
+      if (userInfo.can_claim_ref_rewards)
+      {
         const txFillInfo = await ProofApi.getTxFill({ type: 2000, amount: 0 })
         const { success } = await TonConnect.fetchSendTransaction(txFillInfo.receiver, txFillInfo.amount, txFillInfo.payload)
         if (success) {
