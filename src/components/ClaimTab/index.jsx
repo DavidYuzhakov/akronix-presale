@@ -3,6 +3,7 @@ import { useForm } from '../../context/FormContext'
 import styles from './ClaimTab.module.scss'
 import { calculateTimeLeft } from '../../utils/main'
 import { useTranslation } from 'react-i18next'
+import {IS_CLOSED} from "../../App.jsx";
 
 export function ClaimTab() {
   const { t } = useTranslation()
@@ -28,7 +29,7 @@ export function ClaimTab() {
   return (
     <div className={styles.claim}>
       <p className={'form-text'}>{t('swap.form.tabs.1.paragraph')}</p>
-      <h3>{userInfo.user_info.akron} akron</h3>
+      <h3>{IS_CLOSED ? userInfo.user_info.akron_closed : userInfo.user_info.akron} akron</h3>
       <ul className={'list'}>
         <li>
           <div>
