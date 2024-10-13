@@ -64,7 +64,7 @@ export function FormProvider({ children }) {
     }, 20000);
 
     return () => clearInterval(subscribe)
-  }, [])
+  }, [isAuth])
 
   return (
     <FormContext.Provider
