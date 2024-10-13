@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next'
 export function BuyTab () {
   const { t } = useTranslation()
   const { isAuth } = useAuth()
-  const { updateAmount, balance, amount, setAmount, akron, currency, setCurrency } = useForm()
+  const { updateAmount, balance, amount, setAmount, akron, currency, setCurrency, infoPresale } = useForm()
 
   return (
     <div className={styles.buy}>

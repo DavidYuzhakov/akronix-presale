@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import { useProofApi } from '../hooks/useProofApi'
 import { IS_CLOSED } from '../App'
+import {useAuth} from "./AuthContext.jsx";
 
 const FormContext = createContext(null)
 export const useForm = () => { 
@@ -12,7 +13,7 @@ export const useForm = () => {
 }
 export function FormProvider({ children }) {
   const ProofApi = useProofApi()
-
+  const { isAuth } = useAuth()
   const [akron, setAkron] = useState(0)
   const [amount, setAmount] = useState(0)
   const [balance, setBalance] = useState(0)
@@ -28,10 +29,14 @@ export function FormProvider({ children }) {
   }
 
   async function fetchUserInfo() {
+    if(!isAuth)
+      return;
     const info = await ProofApi.getUserInfo(IS_CLOSED)
     setUserInfo(info)
   }
   async function fetchGetBalance() {
+    if(!isAuth)
+      return;
     const balance = await ProofApi.getBalance()
     setBalance(balance)
   }
@@ -44,6 +49,7 @@ export function FormProvider({ children }) {
     navigator.clipboard.writeText(userInfo.invite_link)
   }
 
+
   useEffect(() => {
     async function fetchInfo () {
       const info = await ProofApi.getPresaleInfo(IS_CLOSED)
@@ -53,10 +59,12 @@ export function FormProvider({ children }) {
 
     const subscribe = setInterval(() => {
       fetchInfo()
+      fetchGetBalance()
+      fetchUserInfo()
     }, 20000);
 
     return () => clearInterval(subscribe)
-  }, [])
+  }, [isAuth])
 
   return (
     <FormContext.Provider
