@@ -1,6 +1,7 @@
 {
   "button": "buy akron",
   "navigation": ["akron coin", "presale", "White Paper", "akronix"],
+  "whitepaper": "https://presale.akronix.io/WhitePaper_en.pdf",
   "intro": {
     "head": {
       "button-connect": "connect wallet",

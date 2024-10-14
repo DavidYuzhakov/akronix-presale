@@ -20,9 +20,9 @@ export function Article () {
         <h2 className={styles.title}>{t('article.title.first')}<br /> {t('article.title.second')}</h2>
       </div>
       <div className={styles.social}>
-        <a href="https://t.me/akronix_p2e"><img src={tgIcon} alt="telegram" /></a>
-        <a href="https://youtube.com/@akronix_legacy"><img src={ytIcon} alt="youtube" /></a>
-        <a href="https://x.com/akronix_p2e"><img src={xIcon} alt="x" /></a>
+        <a href="https://t.me/akronix_p2e" target={"_blank"}><img src={tgIcon} alt="telegram" /></a>
+        <a href="https://youtube.com/@akronix_legacy" target={"_blank"}><img src={ytIcon} alt="youtube" /></a>
+        <a href="https://x.com/akronix_p2e" target={"_blank"}><img src={xIcon} alt="x" /></a>
       </div>
 
       <img className="el el-tl" src={elImg} alt="" />

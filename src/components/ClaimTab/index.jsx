@@ -58,9 +58,15 @@ export function ClaimTab() {
           </div>
         </li>
       </ul>
-      <button className="btn" type="submit">
-        claim akron
-      </button>
+      {
+        userInfo.claim_info.available_akron > 0
+            ? <button className="btn" type="submit">
+              claim ({userInfo.claim_info.available_akron} akron)
+            </button> : <button className="btn" type="submit">
+              nothing claim now
+            </button>
+      }
+
     </div>
   )
 }

@@ -13,6 +13,18 @@ export function Footer () {
     triggerOnce: true
   })
 
+  function handleScrollTo(e, id) {
+    e.preventDefault()
+
+    const block = document.getElementById(id)
+    if (block) {
+      window.scrollTo({
+        top: block.getBoundingClientRect().top + window.scrollY - document.querySelector('header').offsetHeight,
+        behavior: 'smooth'
+      })
+    }
+  }
+
   return (
     <footer ref={ref} className={`${styles.footer} ${inView ? styles._animate : ''}`}>
       <img className={styles.bg} src={bg} alt="" />
@@ -22,24 +34,23 @@ export function Footer () {
         </div>
         <nav className={styles.nav}>
           <ul>
-            <li onClick={(e) => gotoHandler(e, 'about')}>
-              <a href="">{t('navigation.0')}</a>
+            <li onClick={(e) => handleScrollTo(e, 'about')}>
+              <a href="#">{t('navigation.0')}</a>
             </li>
-            <li onClick={(e) => gotoHandler(e, 'rounds')}>
-              <a href="">{t('navigation.1')}</a>
-            </li>
-            <li>
-              <a href="https://axiomabio.com/pdf/test.pdf">{t('navigation.2')}</a>
+            <li onClick={(e) => handleScrollTo(e, 'rounds')}>
+              <a href="#">{t('navigation.1')}</a>
             </li>
             <li>
-              <a href="https://akronix.io">{t('navigation.3')}</a>
+              <a href={t('whitepaper')} target={"_blank"}>{t('navigation.2')}</a>
+            </li>
+            <li>
+              <a href="https://akronix.io" target={"_blank"}>{t('navigation.3')}</a>
             </li>
           </ul>
           <img src={el} alt="" />
         </nav>
         <div className={styles.copyright}>
         ©Copyright 2024 akronix. All Rights Reserved.
-        <a href="">{ t('footer.agreement')}</a>
         </div>
       </div>
     </footer>

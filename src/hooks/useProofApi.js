@@ -21,7 +21,7 @@ export const useProofApi = () => {
 
   const checkAuth = async () => {
     try {
-      const idParam = new URLSearchParams(window.location.search).get('id')
+      const idParam = new URLSearchParams(window.location.search).get('ref')
       const body = { ref_id: idParam ? parseInt(idParam) : -1 }
 
       const { data } = await axios.post('/presale/auth', JSON.stringify(body), {

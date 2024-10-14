@@ -20,6 +20,7 @@ import errorIcon from '../assets/icons/error.svg'
 export function AppLayout () {
   const { error, type } = useAlert()
 
+
   return (
     <div className='wrapper'>
       <ParallaxProvider>

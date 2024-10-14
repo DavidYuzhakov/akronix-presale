@@ -10,7 +10,7 @@ export function ChartItem ({ label, precent, color }) {
           <img src={leftEl} alt="decoration" />
         </div>
         <div className={styles.precent}>
-          <span>{ precent }%</span>
+          <span> { precent }%</span>
         </div>
       </div>
       <div className={styles.progress}>

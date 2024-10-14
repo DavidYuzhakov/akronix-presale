@@ -54,7 +54,7 @@ export function Rounds () {
 
               <div className={styles.token}>
                 <img src={lines} alt="" />
-                <span>{t('rounds.item.paragraph')} {item.precent}%</span>
+                <span>{t('rounds.item.paragraph')} {IS_CLOSED ? 20: item.precent}%</span>
                 <img src={lines} alt="" />
               </div>
               <div className={styles.line} />

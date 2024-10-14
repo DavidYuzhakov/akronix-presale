@@ -21,9 +21,9 @@ export const rounds = [
 ]
 
 export const bonus = [
-  {id: 1, title: 'droid NFT', usdt: 100, ton: 50, color: '#39E182'},
-  {id: 2, title: 'Pilot NFT', usdt: 250, ton: 150, color: '#FAAB27'},
-  {id: 3, title: 'Jawa NFT', usdt: 1000, ton: 500, color: '#EBA82C'},
+  {id: 1, title: 'droid NFT', usdt: 250, ton: 50, color: '#39E182'},
+  {id: 2, title: 'Pilot NFT', usdt: 750, ton: 150, color: '#FAAB27'},
+  {id: 3, title: 'Jawa NFT', usdt: 2500, ton: 500, color: '#EBA82C'},
   {id: 4, title: 'Trooper NFT', usdt: 5000, ton: 1000, color: '#279FD0'},
 ]
 

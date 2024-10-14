@@ -13,7 +13,11 @@ export function AuthProvider ({ children }) {
   const login = (newToken) => {
     setIsAuth(true)
     localStorage.setItem('token', newToken)
-  } 
+  }
+
+  useEffect(() => {
+    logout()
+  }, []);
 
   const logout = () => {
     setIsAuth(false)

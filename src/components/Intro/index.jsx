@@ -39,21 +39,21 @@ export function Intro() {
           <h1>{t ('intro.title')}</h1>
           <Button text={t('button')} clickHandler />
           <div className={styles.social}>
-            <a href='https://t.me/akronix_p2e'>
+            <a href='https://t.me/akronix_p2e'  target="_blank">
               <img src={tgIcon} alt="telegram" />
             </a>
-            <a href='https://youtube.com/@akronix_legacy'>
+            <a href='https://youtube.com/@akronix_legacy'  target="_blank">
               <img src={ytIcon} alt="youtube" />
             </a>
-            <a href='https://x.com/akronix_p2e'>
-              <img src={xIcon} alt="x" />
+            <a href='https://x.com/akronix_p2e' target="_blank">
+              <img src={xIcon}  alt="x" />
             </a>
-            <a href='https://x.com/akronix_p2e'>
-              <img src={dextoolIcon} alt="dextool" />
-            </a>
-            <a href='https://x.com/akronix_p2e'>
-              <img src={stonefiIcon} alt="stonefi" />
-            </a>
+            {/*<a href='https://x.com/akronix_p2e'>*/}
+            {/*  <img src={dextoolIcon} alt="dextool" />*/}
+            {/*</a>*/}
+            {/*<a href='https://x.com/akronix_p2e'>*/}
+            {/*  <img src={stonefiIcon} alt="stonefi" />*/}
+            {/*</a>*/}
           </div>
         </div>
         <div className={styles.coins}>

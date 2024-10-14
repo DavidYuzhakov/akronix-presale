@@ -5,7 +5,7 @@ import './scss/app.scss'
 import './i18n.js'
 
 createRoot(document.getElementById('root')).render(
-  <TonConnectUIProvider manifestUrl='https://wallet.akronix.io/tonconnect.json'>
+  <TonConnectUIProvider restoreConnection={false} manifestUrl='https://wallet.akronix.io/tonconnect.json'>
     <App />
   </TonConnectUIProvider> 
 )

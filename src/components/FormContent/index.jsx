@@ -21,7 +21,7 @@ export function FormContent({ available, price, tonPrice }) {
   const { t } = useTranslation()
   const { isAuth } = useAuth()
   const { showAlert } = useAlert()
-  const { currency, amount, balance, setAkron, fetchGetBalance, fetchUserInfo, userInfo } = useForm()
+  const { currency, amount, balance, setAkron, fetchGetBalance, fetchUserInfo, userInfo, infoPresale } = useForm()
 
   const [activeTab, setActiveTab] = useState('buy')
   const [isSuccess, setIsSuccess] = useState(false)
@@ -41,10 +41,12 @@ export function FormContent({ available, price, tonPrice }) {
     e.preventDefault()
     const type = e.target.dataset.type
     if (type === 'buy') {
+      if(infoPresale.presale_started === false)
+        return;
       if (!isAuth) {
         await TonConnect.fetchGenPayload()
       } else {
-        const limits = currency === 'ton' ? [0.5, 5000] : [5, 25000]
+        const limits = currency === 'ton' ? [0.5, 5000] : [1, 25000]
         const amountInUsd = buyHandler(currency, ...limits)
         if (available < amountInUsd) {
           return showAlert(t('alert.buy.availabel'))
@@ -79,10 +81,26 @@ export function FormContent({ available, price, tonPrice }) {
         }
       }
     } else if (type === 'nft') {
-      if (userInfo.nft_info.claimed_nfts.some(nft => nft)) {
+      if (userInfo.can_claim_nft === true) {
         const txFillInfo = await ProofApi.getTxFill({ 
           type: 2001, 
           amount: 0 
+        })
+        const { success } = await TonConnect.fetchSendTransaction(txFillInfo.receiver, txFillInfo.amount, txFillInfo.payload)
+        if (success) {
+          setIsSuccess(true)
+          return showAlert(t('alert.nft.success'), 'success')
+        } else {
+          setIsSuccess(false)
+          return showAlert(t('alert.nft.error'))
+        }
+      }
+    } else if(type === 'claim')
+    {
+      if (userInfo.can_claim_tge > 0) {
+        const txFillInfo = await ProofApi.getTxFill({
+          type: 2002,
+          amount: 0
         })
         const { success } = await TonConnect.fetchSendTransaction(txFillInfo.receiver, txFillInfo.amount, txFillInfo.payload)
         if (success) {

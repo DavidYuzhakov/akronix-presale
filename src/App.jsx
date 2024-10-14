@@ -3,7 +3,7 @@ import { AlertProvider } from './context/AlertContext'
 import { AppLayout } from './layouts/AppLayout'
 import { FormProvider } from './context/FormContext'
 
-export const IS_CLOSED = false
+export const IS_CLOSED = true
 
 function App() {
   return (

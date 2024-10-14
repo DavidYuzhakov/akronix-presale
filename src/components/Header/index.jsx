@@ -129,6 +129,18 @@ export function Header() {
     }
   })
 
+  function handleScrollTo(e, id) {
+    e.preventDefault()
+
+    const block = document.getElementById(id)
+    if (block) {
+      window.scrollTo({
+        top: block.getBoundingClientRect().top + window.scrollY - document.querySelector('header').offsetHeight,
+        behavior: 'smooth'
+      })
+    }
+  }
+
   useEffect(() => {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
@@ -186,14 +198,14 @@ export function Header() {
             </div>
             <nav className={isActive ? styles.active : ''}>
               <ul>
-                <li onClick={(e) => gotoHandler(e, 'about')}>
-                  <a href="!#">{t('navigation.0')}</a>
+                <li onClick={(e) => handleScrollTo(e, 'about')}>
+                  <a href="#">{t('navigation.0')}</a>
                 </li>
-                <li onClick={(e) => gotoHandler(e, 'rounds')}>
-                  <a href="!#">{t('navigation.1')}</a>
+                <li onClick={(e) => handleScrollTo(e, 'rounds')}>
+                  <a href="#">{t('navigation.1')}</a>
                 </li>
                 <li>
-                  <a href="https://axiomabio.com/pdf/test.pdf">{t('navigation.2')}</a>
+                  <a href={t('whitepaper')} target={"_blank"}>{t('navigation.2')}</a>
                 </li>
                 <li>
                   <a href="https://akronix.io">{t('navigation.3')}</a>
