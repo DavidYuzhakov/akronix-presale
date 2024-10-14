@@ -146,6 +146,21 @@ export function Header() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [lastScrollY])
 
+  useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search)
+    searchParams.set('lang', lang)
+    window.history.replaceState(null, '', `?${searchParams.toString()}`)
+  }, [])
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search)
+    const langFromUrl = searchParams.get('lang')
+    if (langFromUrl) {
+      i18n.changeLanguage(langFromUrl)
+      setLang(langFromUrl)
+    }
+  }, [i18n])
+
   return (
     <>
       <div className={`${styles.overlay} ${isActive ? styles.active : ''}`} />
