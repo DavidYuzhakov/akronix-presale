@@ -46,7 +46,7 @@ export function FormContent({ available, price, tonPrice }) {
       if (!isAuth) {
         await TonConnect.fetchGenPayload()
       } else {
-        const limits = currency === 'ton' ? [0.5, 5000] : [1, 25000]
+        const limits = IS_CLOSED ? (currency === 'ton' ? [5000, 25000] : [25000, 125000]) : (currency === 'ton' ? [1, 5000] : [5, 25000])
         const amountInUsd = buyHandler(currency, ...limits)
         if (available < amountInUsd) {
           return showAlert(t('alert.buy.availabel'))
@@ -55,8 +55,21 @@ export function FormContent({ available, price, tonPrice }) {
         if (amountInUsd) {
           const txFillInfo = await ProofApi.getTxFill({
             type: currency === 'ton' ? (IS_CLOSED ? 3 : 1) : (IS_CLOSED ? 4 : 2),
-            amount: parseFloat(amount)
+            amount: parseFloat(amount),
+            closed: IS_CLOSED
           })
+
+          if(txFillInfo.code === 1)
+          {
+            setIsSuccess(false)
+            return showAlert(t('alert.buy.availabel'))
+          }
+          else if(txFillInfo.code === 2)
+          {
+            setIsSuccess(false)
+            return showAlert(t('alert.buy.stageFull'))
+          }
+
           const { success } = await TonConnect.fetchSendTransaction(txFillInfo.receiver, txFillInfo.amount, txFillInfo.payload)
           if (success) {
             setIsSuccess(true)

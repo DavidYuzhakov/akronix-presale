@@ -18,6 +18,7 @@ import { Parallax } from "react-scroll-parallax"
 import { useInView } from "react-intersection-observer"
 import { useTranslation } from "react-i18next"
 import { useForm } from "../../context/FormContext"
+import {IS_CLOSED} from "../../App.jsx";
 
 export function Swap () {
   const { infoPresale } = useForm()
@@ -37,11 +38,11 @@ export function Swap () {
         <div className={styles.info}>
           <div className={styles.infoItem}>
             <img src={icon} alt="icon info" />
-            <span>{t('swap.info.0')}</span>
+            <span>{IS_CLOSED ? t('swap.infoClosed.0') : t('swap.info.0')}</span>
           </div>
           <div className={styles.infoItem}>
             <img src={icon} alt="icon info" />
-            <span>{t('swap.info.1')}</span>
+            <span>{IS_CLOSED ? t('swap.infoClosed.1') : t('swap.info.1')}</span>
           </div>
         </div>
         <div className={styles.container}>

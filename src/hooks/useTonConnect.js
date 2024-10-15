@@ -39,7 +39,7 @@ const useTonConnect = () => {
 
   async function fetchSendTransaction(address, amount = 0, payload = null) {
     const fillTx = {
-      validUntil: Math.floor(Date.now() / 1000) + 600,
+      validUntil: Math.floor(Date.now() / 1000) + 60,
       messages: [{ address, amount, payload }],
     }
     try {

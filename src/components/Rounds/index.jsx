@@ -23,7 +23,7 @@ export function Rounds () {
     triggerOnce: true
   })
 
-  const data = IS_CLOSED ? rounds.slice(0, 1) : rounds
+  const data = IS_CLOSED ? rounds.slice(3, 4) : rounds.slice(0, 3)
 
   return (
     <section id="rounds" ref={ref} className={`${styles.rounds} ${inView ? styles._animate : ''}`}>
@@ -47,7 +47,7 @@ export function Rounds () {
                     background: isActive ? '#1BDD15' : '#E91F38',
                     boxShadow: `0 0 10px ${isActive ? '#1BDD15' : '#E91F38'}`
                   }} />
-                <h4>{t('rounds.item.name')}{item.id}</h4>
+                <h4>{t('rounds.item.name')}{IS_CLOSED ? 1: item.id}</h4>
                 <img className={styles.arrow} onClick={() => setHide(prev => !prev)} src={arrow} alt="arrow-down" />
               </div>
               <div className={styles.content}>
@@ -66,7 +66,7 @@ export function Rounds () {
                 <button onClick={(e) => isActive ? scrollToBlock(e) : {}} type="button" className={`btn ${styles.btn} ${isActive ? '' : styles.opacity}`}>
                   {isActive ? t('rounds.item.button') : 'coming soon'}
                 </button>
-                <p>{t('rounds.item.text')}</p>
+                <p>{IS_CLOSED ? t('rounds.item.closedText') : t('rounds.item.text')}</p>
               </div>
               </div>
             </div>

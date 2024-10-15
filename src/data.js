@@ -15,9 +15,10 @@ export const tokenomic = [
 ]
 
 export const rounds = [
-  {id: 1, active: true, precent: 2, deadline: ' 01.11.24 - 01.12.24'},
-  {id: 2, active: false, precent: 3, deadline: '02.12.24 - 01.1.25'},
-  {id: 3, active: false, precent: 5, deadline: '02.01.25 - 01.02.25'}
+  {id: 1, active: true, precent: 4, deadline: ' 01.11.24 - 01.12.24'},
+  {id: 2, active: false, precent: 6, deadline: '02.12.24 - 01.1.25'},
+  {id: 3, active: false, precent: 10, deadline: '02.01.25 - 01.02.25'},
+  {id: 4, active: false, precent: 10, deadline: '01.11.24 - 01.02.25'}
 ]
 
 export const bonus = [

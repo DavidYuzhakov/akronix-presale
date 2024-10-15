@@ -42,7 +42,8 @@
       "paragraph": "Tokens for saling -",
       "deadline": "Sale period",
       "button": "participate",
-      "text": "TGE: 50% at listing, then 10% each month"
+      "text": "TGE: 50% at listing, then 5 months with 10% each",
+      "closedText": "TGE: 20% at listing, then 8 months with 10% each"
     }
   },
   "bonus": {
@@ -52,7 +53,8 @@
     "button": "get nft"
   },
   "swap": {
-    "info": ["Min. Purchase - 1 TON", "Max. Purchase - 5,000 TON per wallet"],
+    "info": ["Min. Purchase - 1 TON or 5 USDT", "Max. Purchase - 5,000 TON or 25,000 USDT per wallet"],
+    "infoClosed": ["Min. Purchase - 5000 TON or 25000 USDT", "Max. Purchase - 25,000 TON or 125,000 USDT per wallet"],
     "title": "Last chance to buy Akron:",
     "timer": {
       "paragraph": "Until the end of presale:",
@@ -149,7 +151,8 @@
       ],
       "availabel": "Exceeded the allowable number of tokens",
       "success": "Transaction sent successfully",
-      "error": "Failed to complete the transaction, please try again later"
+      "error": "Failed to complete the transaction, please try again later",
+      "stageFull": "Unable to purchase more tokens than are available at the current phase"
     },
     "partner": {
       "success": "Claim rewards successfully completed",
